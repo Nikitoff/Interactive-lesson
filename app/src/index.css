@@ -1,0 +1,280 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+    --radius: 0.625rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 26.1%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 224.3 76.3% 48%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+}
+
+/* ============ Lesson deck theme ============ */
+
+:root {
+  --paper: #FBF6E9;
+  --paper2: #F4EEE1;
+  --ink: #4A4036;
+  --ink-dark: #3A332B;
+  --dim: #857769;
+  --line: #DCCFB2;
+  --sage: #6E9077;
+  --blue: #7C96A6;
+  --terra: #C48A6A;
+  --terra-dark: #A96F52;
+  --rose: #C9A09A;
+  --gold: #D3B57C;
+  --gold-deep: #8F6B32;
+  --good: #5F8268;
+  --bad: #B0625A;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  background-color: var(--paper2);
+  color: var(--ink);
+  font-family: 'PT Sans', 'Segoe UI', sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-display { font-family: 'Playfair Display', Georgia, serif; }
+.font-mono-ui { font-family: 'Oswald', 'Arial Narrow', sans-serif; }
+
+.text-gold { color: var(--gold-deep); }
+.text-cream { color: var(--ink-dark); }
+.text-dim { color: var(--dim); }
+.bg-navy { background-color: var(--paper); }
+.bg-panel { background-color: var(--paper2); }
+.border-line { border-color: var(--line); }
+.border-gold { border-color: var(--terra); }
+
+/* thin gallery frame around the stage */
+.deck-frame {
+  border: 1px solid var(--line);
+  box-shadow: 0 12px 40px rgba(74, 64, 54, 0.14);
+}
+
+/* slide transition: directional slide + fade */
+@keyframes slideInNext {
+  0% { opacity: 0; transform: translateX(1rem); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideInPrev {
+  0% { opacity: 0; transform: translateX(-1rem); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+.slide-in-next { animation: slideInNext 0.5s cubic-bezier(0.77, 0, 0.175, 1) both; }
+.slide-in-prev { animation: slideInPrev 0.5s cubic-bezier(0.77, 0, 0.175, 1) both; }
+
+/* staged reveal */
+@keyframes stepIn {
+  0% { opacity: 0; transform: translateY(0.5rem); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.step-in { animation: stepIn 0.35s cubic-bezier(0.075, 0.82, 0.165, 1) both; }
+
+@keyframes popIn {
+  0% { opacity: 0; transform: scale(0.92); }
+  100% { opacity: 1; transform: scale(1); }
+}
+.pop-in { animation: popIn 0.3s cubic-bezier(0.075, 0.82, 0.165, 1) both; }
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+.shake { animation: shake 0.25s ease-in-out 2; }
+
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(196, 138, 106, 0.35); }
+  50% { box-shadow: 0 0 0 10px rgba(196, 138, 106, 0); }
+}
+.glow-pulse { animation: glowPulse 1.6s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .slide-in-next, .slide-in-prev, .step-in, .pop-in, .glow-pulse, .shake {
+    animation: none !important;
+  }
+}
+
+/* buttons */
+.btn-gold {
+  background-color: var(--terra);
+  color: #FFFBF2;
+  font-family: 'Oswald', 'Arial Narrow', sans-serif;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 0.82rem;
+  padding: 0.7rem 1.4rem;
+  border: 1px solid var(--terra);
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+  cursor: pointer;
+  min-height: 44px;
+}
+.btn-gold:hover { background-color: var(--terra-dark); border-color: var(--terra-dark); }
+.btn-gold:active { transform: scale(0.97); }
+.btn-gold:focus-visible { outline: 2px solid var(--gold-deep); outline-offset: 2px; }
+.btn-gold:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.btn-ghost {
+  background-color: rgba(251, 246, 233, 0.85);
+  color: var(--ink);
+  font-family: 'Oswald', 'Arial Narrow', sans-serif;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 0.82rem;
+  padding: 0.7rem 1.4rem;
+  border: 1px solid #C9BC9C;
+  transition: border-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+  cursor: pointer;
+  min-height: 44px;
+}
+.btn-ghost:hover { border-color: var(--terra); color: var(--terra-dark); }
+.btn-ghost:active { transform: scale(0.97); }
+.btn-ghost:focus-visible { outline: 2px solid var(--gold-deep); outline-offset: 2px; }
+
+/* chips / cards */
+.word-chip {
+  border: 1px solid var(--terra);
+  color: var(--ink);
+  background-color: rgba(251, 246, 233, 0.92);
+  padding: 0.55rem 1.1rem;
+  font-family: 'Oswald', 'Arial Narrow', sans-serif;
+  font-weight: 500;
+  font-size: 1.05rem;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+  min-height: 44px;
+}
+.word-chip:hover { background-color: rgba(196, 138, 106, 0.18); }
+.word-chip:active { transform: scale(0.96); }
+.word-chip:focus-visible { outline: 2px solid var(--gold-deep); outline-offset: 2px; }
+.word-chip.used { opacity: 0.35; pointer-events: none; }
+.word-chip.in-answer { background-color: var(--terra); border-color: var(--terra); color: #FFFBF2; }
+
+.panel-card {
+  border: 1px solid var(--line);
+  background-color: rgba(251, 246, 233, 0.94);
+}
+
+/* progress bar */
+.progress-track { background-color: #E4DAC2; height: 3px; }
+.progress-fill { background-color: var(--terra); height: 3px; transition: width 0.4s cubic-bezier(0.77, 0, 0.175, 1); }
+
+/* kicker label */
+.kicker {
+  font-family: 'Oswald', 'Arial Narrow', sans-serif;
+  font-weight: 500;
+  font-size: 0.75rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--terra-dark);
+  display: inline-block;
+  background-color: rgba(251, 246, 233, 0.78);
+  padding: 0.25rem 0.6rem;
+}
+
+/* roman numeral slide badge */
+.slide-badge {
+  font-family: 'Oswald', 'Arial Narrow', sans-serif;
+  letter-spacing: 0.18em;
+  color: var(--dim);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+/* traffic light circles */
+.traffic {
+  width: 84px; height: 84px; border-radius: 9999px;
+  border: 2px solid #C9BC9C;
+  background-color: rgba(251, 246, 233, 0.85);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.traffic:hover { transform: scale(1.05); }
+.traffic:focus-visible { outline: 2px solid var(--gold-deep); outline-offset: 3px; }
+.traffic.selected { box-shadow: 0 6px 22px rgba(74, 64, 54, 0.25); }
+
+/* quote styling */
+.epigraph {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  color: var(--ink-dark);
+}
+
+/* stage with vintage background */
+.stage-bg {
+  background-size: cover;
+  background-position: center;
+}
